@@ -1,0 +1,57 @@
+{
+  "id": "mis-listas-m3u",
+  "name": "Mis Listas M3U",
+  "version": "1.0.0",
+  "apiVersion": 6,
+  "entry": "plugin.js",
+  "description": "Agrega tus propias listas M3U (con guía EPG opcional) y mira tus canales en vivo, agrupados y con logos, dentro de Kino.",
+  "author": "tu-usuario",
+  "homepage": "https://github.com/tu-usuario/kino-plugin-m3u",
+  "hosts": [],
+  "liveStreamHosts": "any",
+  "capabilities": ["channels", "search", "resolve"],
+  "categories": ["live", "utilities"],
+  "discoverable": true,
+  "debug": false,
+  "telemetry": false,
+  "theme": {
+    "accent": "#7C5CFF",
+    "onAccent": "#FFFFFF",
+    "background": "#0E0B1A",
+    "surface": "#191430",
+    "highlight": "#EDE8FF"
+  },
+  "settings": [
+    { "key": "listas", "label": "Tus listas", "type": "section", "hint": "Pega la dirección de cada lista M3U/M3U8 que quieras. Cada grupo de la lista (group-title) aparece como una categoría en la pestaña En vivo, con sus logos." },
+    {
+      "key": "playlists",
+      "label": "Listas M3U",
+      "type": "list",
+      "max": 10,
+      "fields": [
+        { "key": "url", "label": "Dirección de la lista", "type": "url", "required": true, "hint": "https://ejemplo.com/lista.m3u" },
+        { "key": "epg", "label": "Guía EPG (XMLTV)", "type": "url", "hint": "Opcional: https://ejemplo.com/guia.xml" },
+        { "key": "hide", "label": "Ocultar grupos", "type": "text", "hint": "Opcional, separados por coma: Adultos, Radio" }
+      ]
+    },
+    { "key": "avanzado", "label": "Avanzado", "type": "section", "hint": "Algunos canales solo responden a un reproductor conocido." },
+    { "key": "userAgent", "label": "User-Agent de los canales", "type": "text", "hint": "VLC/3.0.20 LibVLC/3.0.20" },
+    { "key": "referer", "label": "Referer de los canales", "type": "url", "hint": "Opcional" },
+    {
+      "key": "refresh",
+      "label": "Actualizar listas",
+      "type": "select",
+      "default": "12",
+      "options": [
+        { "value": "1", "label": "Cada hora" },
+        { "value": "6", "label": "Cada 6 horas" },
+        { "value": "12", "label": "Cada 12 horas" },
+        { "value": "24", "label": "Cada día" }
+      ]
+    },
+    { "key": "estado", "label": "Estado", "type": "status" },
+    { "key": "probar", "label": "Probar mis listas", "type": "action" },
+    { "key": "quitarAgente", "label": "Usar el User-Agent de Kino", "type": "action" }
+  ],
+  "color": "#7C5CFF"
+}
